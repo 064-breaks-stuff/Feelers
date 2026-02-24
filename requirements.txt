@@ -1,0 +1,6 @@
+spotipy
+python-dotenv
+librosa
+soundfile
+requests
+nltk
