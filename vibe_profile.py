@@ -58,3 +58,24 @@ class SongVibeProfile:
     c5: C5LyricalSentiment
     c6: C6EnergyArc
     c7: C7Context
+
+import json
+from dataclasses import asdict
+
+def profile_to_dict(p: SongVibeProfile) -> dict:
+    return asdict(p)
+
+def profile_from_dict(d: dict) -> SongVibeProfile:
+    # Simple reconstruct using unpacking
+    return SongVibeProfile(
+        spotify_id=d["spotify_id"],
+        name=d["name"],
+        artist=d["artist"],
+        c1=C1EmotionalCore(**d["c1"]),
+        c2=C2MoodFingerprint(top3_moods=d["c2"]["top3_moods"]),
+        c3=C3TempoGroove(**d["c3"]),
+        c4=C4TimbreProfile(**d["c4"]),
+        c5=C5LyricalSentiment(**d["c5"]),
+        c6=C6EnergyArc(**d["c6"]),
+        c7=C7Context(**d["c7"]),
+    )
